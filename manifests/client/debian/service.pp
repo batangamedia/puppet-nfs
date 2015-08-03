@@ -16,6 +16,9 @@ class nfs::client::debian::service {
       subscribe => Augeas['/etc/idmapd.conf', '/etc/default/nfs-common'],
     }
   } else {
-    service { 'idmapd': ensure => stopped, }
+    service { 'idmapd':
+      ensure => stopped,
+      name      => 'nfs-common',
+    }
   }
 }
